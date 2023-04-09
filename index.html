@@ -60,10 +60,13 @@
         <div class="column" id="col2">
             <div class="component" id="weather">
                 <div class="component-header">
-                    <i class="fas fa-cloud"></i> Weather
+                    <span><i class="fas fa-cloud"></i> Weather</span>
+                    <span><i class="fas fa-rotate-right"></i></span>
                 </div>
                 <div class="component-body">
                     <div id="current-weather">
+                        <div id="weather-left"></div>
+                        <div id="weather-right"></div>
                     </div>
                     <div id="later-weather"></div>
                     <script src="components/weather/weather.js"></script>
@@ -143,9 +146,9 @@
             </div>
         </div>
     </div>
-    <div id="input">
+    <div id="VoiceInput">
         <input type="text" id="inputBox">
-        <i class="fas fa-microphone" id=""></i>
+        <i class="fas fa-microphone" id="voiceInputIcon"></i>
     </div>
 </body>
 </html>
