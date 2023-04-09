@@ -1,0 +1,151 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Home</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <!-- <script src="scripts/draggable.js"></script> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="menu">
+            <div class="menu-item">
+                <i class="fas fa-house"></i>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-gear"></i>
+            </div>
+        </div>
+        <div class="column" id="col1">
+            <div class="component" id="clock">
+                <div class="component-header">
+                    <i class="fas fa-clock"></i> Clock
+                </div>
+                <div class="component-body">
+                    <script src="components/clock/clock.js"></script>
+                </div>
+            </div>
+            <div class="component" id="calendar">
+                <div class="component-header">
+                    <i class="fas fa-calendar"></i> Calendar
+                </div>
+                <div class="component-body">
+                    <div class="calendar-header">
+                      <div class="calendar-navigation">
+                        <i class="fas fa-chevron-left" id="calendar-prev"></i>
+                        <span class="calendar-current-date"></span>
+                        <i class="fas fa-chevron-right" id="calendar-next"></i>
+                      </div>
+                    </div>
+                  
+                    <div class="calendar-body">
+                      <ul class="calendar-weekdays">
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                        <li>Sun</li>
+                      </ul>
+                      <ul class="calendar-dates"></ul>
+                    </div>
+                  </div>
+                  <script src="components/calendar/calendar.js"></script>
+            </div>
+        </div>
+        <div class="column" id="col2">
+            <div class="component" id="weather">
+                <div class="component-header">
+                    <i class="fas fa-cloud"></i> Weather
+                </div>
+                <div class="component-body">
+                    <div id="current-weather">
+                    </div>
+                    <div id="later-weather"></div>
+                    <script src="components/weather/weather.js"></script>
+                </div>
+            </div>
+            <div class="component" id="todo">
+                <div class="component-header">
+                    <i class="fas fa-check"></i> TODO List
+                </div>
+                <div class="component-body">
+                    <div id="items">
+                        <ul>
+                            <li draggable="true">Do my homework</li>
+                            <li draggable="true">Make a dinner</li>
+                            <li draggable="true">Go for a walk</li>
+                        </ul>
+                    </div>
+                    <div id="input">
+                        <input type="text" id="inputBox">
+                        <div class="spacer"></div>
+                        <div id="add">
+                            <span class="fas fa-plus addButton"></span>
+                        </div>
+                    </div>
+                </div>
+                <script src="components/todo-list/todo.js"></script>
+            </div>
+        </div>
+        <div class="column" id="col3">
+            <div class="component" id="lights">
+                <div class="component-header">
+                    <i class="fas fa-lightbulb"></i> Lights Controller
+                </div>
+                <div class="component-body">
+                    <!-- Lights Controller -->
+                </div>
+            </div>
+            <div class="component" id="shopping">
+                <div class="component-header">
+                    <i class="fas fa-cart-shopping"></i> Shopping List
+                </div>
+                <div class="component-body">
+                    <div id="items">
+                        <ul>
+                            <li draggable="true">Milk</li>
+                            <li draggable="true">10 Eggs</li>
+                            <li draggable="true">Cucumber</li>
+                        </ul>
+                    </div>
+                    <div id="input">
+                        <input type="text" id="inputBox">
+                        <div class="spacer"></div>
+                        <div id="add">
+                            <span class="fas fa-plus addButton"></span>
+                        </div>
+                    </div>
+                </div>
+                <script src="components/shopping-list/"></script>
+            </div>
+        </div>
+        <div class="column" id="col4">
+            <div class="component" id="music">
+                <div class="component-header">
+                    <i class="fas fa-music"></i> Music
+                </div>
+                <div class="component-body">
+                    <!-- Music -->
+                </div>
+            </div>
+            <div class="component" id="calculator">
+                <div class="component-header">
+                    <i class="fas fa-calculator"></i> Calculator
+                </div>
+                <div class="component-body">
+                    <!-- Calculator -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="input">
+        <input type="text" id="inputBox">
+        <i class="fas fa-microphone" id=""></i>
+    </div>
+</body>
+</html>
