@@ -1,5 +1,20 @@
 <?php
 session_start();
+require 'vendor/autoload.php';
+
+$config = [
+    'accessKey' => '79emhsekqvfcwh49e5qf',
+    'secretKey' => '7aa77a44941749e69557b5a37c6317fd',
+    'baseUrl' => 'https://openapi.tuyaeu.com'
+];
+
+$tuya = new \tuyapiphp\TuyaApi($config);
+$bulbs = [
+    'bf107508a1f5e55266rwmf',
+    'bfea2bcfee238d9efetlqi',
+    'bff953e9efb2c12e69qnts',
+    'bff2ebfe13b2d29ef4diep'
+];
 ?>
 <html lang="en">
 <head>
@@ -118,7 +133,10 @@ session_start();
                     <i class="fas fa-lightbulb"></i> Lights Controller
                 </div>
                 <div class="component-body">
-                    <!-- Lights Controller -->
+                    <input type="range" min="1" value="50" max="100" name="brightness">
+                    <button type="button" name="action" value="turn_on" data-command="switch_led" data-value="true">Turn On</button>
+                    <button type="button" name="action" value="turn_off" data-command="switch_led" data-value="false">Turn Off</button>
+                    <?php include 'components/lights/lights.php'; ?>
                 </div>
             </div>
         </div>
