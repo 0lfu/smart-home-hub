@@ -1,20 +1,5 @@
 <?php
 session_start();
-require 'vendor/autoload.php';
-
-$config = [
-    'accessKey' => '79emhsekqvfcwh49e5qf',
-    'secretKey' => '7aa77a44941749e69557b5a37c6317fd',
-    'baseUrl' => 'https://openapi.tuyaeu.com'
-];
-
-$tuya = new \tuyapiphp\TuyaApi($config);
-$bulbs = [
-    'bf107508a1f5e55266rwmf',
-    'bfea2bcfee238d9efetlqi',
-    'bff953e9efb2c12e69qnts',
-    'bff2ebfe13b2d29ef4diep'
-];
 ?>
 <html lang="en">
 <head>
