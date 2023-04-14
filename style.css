@@ -57,8 +57,7 @@ a{
     border-radius: 10px;
     display: flex;
 }
-#VoiceInput #inputBox{
-    outline: 0;
+#VoiceInput #VoiceIOBox{
     height: 100%;
     flex-grow: 1;
     border-radius: 10px;
@@ -67,6 +66,8 @@ a{
     font-size: 24px;
     color: #aaa;
     padding: 0 16px;
+    display: flex;
+    align-items: center;
 }
 #VoiceInput i{
     color: white;
@@ -113,7 +114,48 @@ a{
     justify-content: center;
     font-size: 50px;
 }
+/* SPOTIFY COMPONENT */
+#spotify .component-header{
+    background-color: rgb(36, 122, 36);
+}
+#spotify .component-body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+#spotify #cover{
+    height: 100px;
+    aspect-ratio: 1 / 1;
+}
+#spotify #infoandcontrols{
+    height: 100px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+#spotify #info{
+    padding: 0 20px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
 
+#spotify #controls{
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#spotify #controls i{
+    color: #303030;
+    font-size: 22px;
+}
+#spotify .song-title{
+    font-size: 20px;
+}
 /* TODO LIST COMPONENT */
 #todo .component-header{
     background-color: rgb(165, 61, 42);

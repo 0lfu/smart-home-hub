@@ -1,9 +1,11 @@
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Smart Home</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="scripts/draggable.js"></script>
@@ -99,7 +101,16 @@
                     <i class="fab fa-spotify"></i> <a href="spotify://">Spotify</a>
                 </div>
                 <div class="component-body">
-                    <!-- Music -->
+                    <div id="cover"></div>
+                    <div id="infoandcontrols">
+                        <div id="info"></div>
+                        <div id="controls">
+                            <i class="fas fa-backward-step" id="previous"></i>
+                            <i class="fas fa-play-pause" id="play-pause"></i>
+                            <i class="fas fa-forward-step" id="next"></i>
+                        </div>
+                    </div>
+                    <?php include 'components/spotify/spotify.php'; ?>
                 </div>
             </div>
             <div class="component" id="lights">
@@ -199,15 +210,15 @@
                         YouTube
                     </div>
                     <div class="shortcut-item">
-                        <a href="https://olx.pl" target="_blank" style="background-image: url('https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.getsu.pl&size=128') ;"></a>
+                        <a href="https://getsu.pl" target="_blank" style="background-image: url('https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.getsu.pl&size=128') ;"></a>
                         Getsu
                     </div>
                     <div class="shortcut-item">
-                        <a href="https://pepper.pl" target="_blank" style="background-image: url('https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.cda.pl&size=128') ;"></a>
+                        <a href="https://cda.pl" target="_blank" style="background-image: url('https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.cda.pl&size=128') ;"></a>
                         CDA
                     </div>
                     <div class="shortcut-item">
-                        <a href="https://aliexpress.com" target="_blank" style="background-image: url('https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://docchi.pl&size=128') ;"></a>
+                        <a href="https://docchi.pl" target="_blank" style="background-image: url('https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://docchi.pl&size=128') ;"></a>
                         Docchi
                     </div>
                 </div>
@@ -234,8 +245,10 @@
         </div>
     </div>
     <div id="VoiceInput">
-        <input type="text" id="inputBox">
+        <div id="VoiceIOBox"></div>
         <i class="fas fa-microphone" id="voiceInputIcon"></i>
     </div>
+    <script src="scripts/voice/commands.js"></script>
+    <script src="scripts/voice/voice.js"></script>
 </body>
 </html>
