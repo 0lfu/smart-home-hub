@@ -1,4 +1,8 @@
-const apiKey = '433f32924ecebe72d3ff2b702ac1e498';
+<?php
+require_once 'credentials.php';
+?>
+<script>
+const apiKey = "<?php echo $weather['api_key']?>";
 
 navigator.geolocation.getCurrentPosition((position) => {
   const lat = position.coords.latitude;
@@ -59,3 +63,4 @@ navigator.geolocation.getCurrentPosition((position) => {
 }, (error) => {
   console.error(error);
 });
+</script>

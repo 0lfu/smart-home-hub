@@ -1,4 +1,5 @@
 <?php
+require_once '../../credentials.php';
 session_start();
 if (isset($_GET['access_token'])) {
     setcookie('spotify_token', $_GET['access_token'], time() + (3600), "/");
@@ -21,9 +22,9 @@ if (isset($_GET['access_token'])) {
             window.location.href='authorize.php?access_token='+accessToken;
         }
         else{
-            const CLIENT_ID = 'c7dd19bfd5c84a4ea5bcc9af6f5d3256';
-            const REDIRECT_URI = 'http://localhost:80/Smart%20Home/components/spotify/authorize.php';
-            const scopes = ['user-read-playback-state', 'user-modify-playback-state'];
+            const CLIENT_ID = $spotify.client_id;
+            const REDIRECT_URI = $spotify.redirect;
+            const scopes = $spotify.scopes;
             const url = `https://accounts.spotify.com/authorize?response_type=token&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(scopes.join(' '))}`;
             window.location.href = url;
         }

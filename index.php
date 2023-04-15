@@ -69,7 +69,7 @@ session_start();
                         <div id="weather-right"></div>
                     </div>
                     <div id="later-weather"></div>
-                    <script src="components/weather/weather.js"></script>
+                    <?php include_once "components/weather/weather.php";?>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@ session_start();
                             <i class="fas fa-forward-step" id="next"></i>
                         </div>
                     </div>
-                    <?php include 'components/spotify/spotify.php'; ?>
+                    <?php include_once 'components/spotify/spotify.php'; ?>
                 </div>
             </div>
             <div class="component" id="lights">
@@ -126,7 +126,7 @@ session_start();
                         <span><i class="fas fa-brightness brght"></i><input type="range" min="1" value="50" max="100" name="brightness" class="brightness-range"></span>
                         <span><i class="fas fa-temperature-half temp"></i><input type="range" min="1" value="50" max="100" name="temperature" class="temperature-range"></span>
                     </div>
-                    <?php include 'components/lights/lights.php'; ?>
+                    <?php include_once 'components/lights/lights.php'; ?>
                 </div>
             </div>
         </div>
