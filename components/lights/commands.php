@@ -27,4 +27,9 @@ if ($command == 'bright_value_v2'){
         $t=$tuya->devices($token)->post_commands($bulbs[$i], ['commands' => [['code' => $command, 'value' => $value*10]]]);
     }
 }
+if ($command == 'temp_value_v2'){
+    for ($i = 0; $i < count($bulbs); $i++) {
+        $t=$tuya->devices($token)->post_commands($bulbs[$i], ['commands' => [['code' => $command, 'value' => $value*10]]]);
+    }
+}
 ?>

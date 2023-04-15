@@ -118,9 +118,14 @@ session_start();
                     <i class="fas fa-lightbulb"></i> Lights Controller
                 </div>
                 <div class="component-body">
-                    <input type="range" min="1" value="50" max="100" name="brightness">
-                    <button type="button" name="action" value="turn_on" data-command="switch_led" data-value="true">Turn On</button>
-                    <button type="button" name="action" value="turn_off" data-command="switch_led" data-value="false">Turn Off</button>
+                    <div id="light-switches">
+                        <i class="fas fa-lightbulb-on allon" name="action" value="turn_on" data-command="switch_led" data-value="true"></i>
+                        <i class="far fa-lightbulb-slash alloff" name="action" value="turn_off" data-command="switch_led" data-value="false"></i>
+                    </div>
+                    <div id="light-sliders">
+                        <span><i class="fas fa-brightness brght"></i><input type="range" min="1" value="50" max="100" name="brightness" class="brightness-range"></span>
+                        <span><i class="fas fa-temperature-half temp"></i><input type="range" min="1" value="50" max="100" name="temperature" class="temperature-range"></span>
+                    </div>
                     <?php include 'components/lights/lights.php'; ?>
                 </div>
             </div>

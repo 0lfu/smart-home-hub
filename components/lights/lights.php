@@ -1,22 +1,36 @@
 <script>
-var slider = document.querySelector('input[name="brightness"]');
-var buttons = document.querySelectorAll('[data-command]');
+var bright_slider = document.querySelector('input[name="brightness"]');
+var temp_slider = document.querySelector('input[name="temperature"]');
+var switches = document.querySelectorAll('[data-command]');
 var timeoutId;
 
 function setBrightness() {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'components/lights/commands.php');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    var params = 'command=bright_value_v2&value=' + slider.value;
+    var params = 'command=bright_value_v2&value=' + bright_slider.value;
     xhr.send(params);
 }
 
-slider.addEventListener('input', function() {
+function setTemperature() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'components/lights/commands.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var params = 'command=temp_value_v2&value=' + temp_slider.value;
+    xhr.send(params);
+}
+
+bright_slider.addEventListener('input', function() {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(setBrightness, 1000);
+    timeoutId = setTimeout(setBrightness, 400);
 });
 
-buttons.forEach(function(button) {
+temp_slider.addEventListener('input', function() {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(setTemperature, 400);
+});
+
+switches.forEach(function(button) {
     button.addEventListener('click', function() {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'components/lights/commands.php');
