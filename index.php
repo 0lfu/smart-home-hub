@@ -32,7 +32,7 @@ session_start();
             </div>
             <div class="component" id="calendar">
                 <div class="component-header">
-                    <i class="fas fa-calendar"></i> Calendar
+                    <i class="fas fa-calendar"></i> <a href="https://calendar.google.com/calendar/" target="_blank">Calendar</a>
                 </div>
                 <div class="component-body">
                     <div class="calendar-header">
@@ -61,7 +61,7 @@ session_start();
             <div class="component" id="weather">
                 <div class="component-header">
                     <span><i class="fas fa-cloud"></i> Weather</span>
-                    <span><i class="fas fa-rotate-right"></i></span>
+                    <span><i class="fas fa-rotate-right" onclick="updateWeather()"></i></span>
                 </div>
                 <div class="component-body">
                     <div id="current-weather">
@@ -76,7 +76,7 @@ session_start();
         <div class="column" id="col2">
             <div class="component" id="todo">
                 <div class="component-header">
-                    <i class="fas fa-check"></i> TODO List
+                    <i class="fas fa-check"></i> <a href="https://todoist.com/app/project/2299972407" target="_blank">Todoist</a>
                 </div>
                 <div class="component-body">
                     <div id="items">

@@ -3,8 +3,8 @@ require_once 'credentials.php';
 ?>
 <script>
 const apiKey = "<?php echo $weather['api_key']?>";
-
-navigator.geolocation.getCurrentPosition((position) => {
+function updateWeather(){
+  navigator.geolocation.getCurrentPosition((position) => {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
 
@@ -60,7 +60,9 @@ navigator.geolocation.getCurrentPosition((position) => {
     .catch(error => {
       console.error(error);
     });
-}, (error) => {
-  console.error(error);
-});
+    }, (error) => {
+    console.error(error);
+  });
+}
+updateWeather();
 </script>
