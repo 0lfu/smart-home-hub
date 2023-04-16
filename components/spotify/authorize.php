@@ -22,9 +22,11 @@ if (isset($_GET['access_token'])) {
             window.location.href='authorize.php?access_token='+accessToken;
         }
         else{
-            const CLIENT_ID = $spotify.client_id;
-            const REDIRECT_URI = $spotify.redirect;
-            const scopes = $spotify.scopes;
+            const CLIENT_ID = "<?php echo $spotify['client_id']; ?>";
+            console.log(CLIENT_ID);
+            const REDIRECT_URI = "<?php echo $spotify['redirect']; ?>";
+            console.log(REDIRECT_URI);
+            const scopes = ['user-read-playback-state', 'user-modify-playback-state'];
             const url = `https://accounts.spotify.com/authorize?response_type=token&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(scopes.join(' '))}`;
             window.location.href = url;
         }
