@@ -54,6 +54,19 @@ const manipulate = () => {
   
 manipulate();
 
+day.addEventListener('click', (event) => {
+  const li = event.target.closest('li');
+  const isActive = !event.target.classList.contains('inactive');
+  if (li && isActive) {
+    const clickedDate = event.target.innerText.padStart(2, '0');;
+    const clickedMonth = (month + 1).toString().padStart(2, '0');
+    const clickedYear = year;
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Event+Title&dates=${clickedYear}${clickedMonth}${clickedDate}/${clickedYear}${clickedMonth}${clickedDate}`;
+    window.open(googleCalendarUrl);
+  }
+});
+
+
 icons.forEach(icon => {
     icon.addEventListener("click", () => {
         month = icon.id === "calendar-prev" ? month - 1 : month + 1;
