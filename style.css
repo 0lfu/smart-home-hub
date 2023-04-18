@@ -248,7 +248,7 @@ transform: scale(0.98);
     overflow-x: hidden; 
     flex-grow: 1;
 }
-#todo #input{
+#todo #input {
     justify-self: flex-end;
     display: flex;
     align-items: center;
@@ -258,7 +258,13 @@ transform: scale(0.98);
     border-radius: 10px;
     margin-top: 10px;
 }
-
+#todo #input .add{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-size: 30px;
+    border: none;
+}
 #todo #items::-webkit-scrollbar {
     margin-top: 15px;
     width: 20px;

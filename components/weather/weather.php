@@ -65,4 +65,5 @@ function updateWeather(){
   });
 }
 updateWeather();
+setInterval(updateWeather, 30 * 60 * 1000);
 </script>

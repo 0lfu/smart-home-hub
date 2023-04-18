@@ -1,30 +1,64 @@
 const inputBox = $("#todo #inputBox");
-const addButton = $("#todo .addButton");
-const itemList = $("#todo ul");
 
 $("#todo ul").sortable();
 
-addButton.click(addItem);
-
 inputBox.on("keypress", function (event) {
-    if (event.key === "Enter") {
-        addItem();
-    }
+	if (event.key === "Enter") {
+		addItem();
+	}
 });
 
-itemList.click(removeItem);
+$(".addButton").on("click", addItem);
 
-function addItem() {
-    const newItem = inputBox[0].value;
-    if (newItem !== "") {
-        const li = $("<li>").text(newItem);
-        itemList.append(li);
-        inputBox[0].value = "";
-    }
+$("#task-list").on("click", "li", removeItem);
+
+function removeItem() {
+	const taskId = $(this).data("task-id");
+	const liItem = $(this);
+	$.ajax({
+		url: "components/todo-list/closeTask.php",
+		method: "POST",
+		data: { taskId: taskId },
+		dataType: "json",
+		success: function (response) {
+			console.log(response);
+			if (response.success) {
+				liItem.closest("li").remove();
+			} else {
+				console.error("Error closing task");
+			}
+		},
+		error: function (xhr, status, error) {
+			console.log(xhr);
+			console.error(xhr.responseText);
+		},
+	});
 }
 
-function removeItem(event) {
-    if (event.target.tagName === "LI") {
-        $(event.target).remove();
-    }
+function addItem() {
+	const inputContent = $("#inputBox").val();
+	if (inputContent != "") {
+		$.ajax({
+			url: "components/todo-list/addTask.php",
+			method: "POST",
+			data: { content: inputContent },
+			dataType: "json",
+			success: function (response) {
+				if (response.success) {
+					var taskList = document.getElementById("task-list");
+					var newTask = document.createElement("li");
+					newTask.innerHTML = response.content;
+					newTask.setAttribute("data-task-id", response.taskId);
+					taskList.appendChild(newTask);
+					document.getElementById("inputBox").value = "";
+				} else {
+					console.error("Error closing task");
+				}
+			},
+			error: function (xhr, status, error) {
+				console.log(xhr);
+				console.error(xhr.responseText);
+			},
+		});
+	}
 }

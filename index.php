@@ -80,21 +80,22 @@ session_start();
                 </div>
                 <div class="component-body">
                     <div id="items">
-                        <ul>
-                            <li draggable="true">Do my homework</li>
-                            <li draggable="true">Make a dinner</li>
-                            <li draggable="true">Go for a walk</li>
+                        <?php include_once 'components/todo-list/getTasks.php'; ?>
+                        <ul id="task-list">
+                            <?php foreach ($tasks as $task) : ?>
+                                <li <?= 'data-task-id="' . $task['id'] . '"'; ?>><?= $task['content']; ?></li>
+                            <?php endforeach ?>
                         </ul>
                     </div>
                     <div id="input">
                         <input type="text" id="inputBox">
                         <div class="spacer"></div>
                         <div id="add">
-                            <span class="fas fa-plus addButton"></span>
+                            <span type="submit" class="fas fa-plus addButton"></span>
                         </div>
+                        <script src="components/todo-list/todo.js"></script>
                     </div>
                 </div>
-                <script src="components/todo-list/todo.js"></script>
             </div>
             <div class="component" id="spotify">
                 <div class="component-header">
