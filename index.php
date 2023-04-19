@@ -157,14 +157,15 @@ session_start();
             </div>
             <div class="component" id="shopping">
                 <div class="component-header">
-                    <i class="fas fa-cart-shopping"></i> Shopping List
+                    <i class="fas fa-cart-shopping"></i> <a href="https://todoist.com/app/project/2304570421" target="_blank">Shopping List</a>
                 </div>
                 <div class="component-body">
                     <div id="items">
-                        <ul>
-                            <li draggable="true">Milk</li>
-                            <li draggable="true">10 Eggs</li>
-                            <li draggable="true">Cucumber</li>
+                        <?php include_once 'components/shopping-list/getTasks.php'; ?>
+                        <ul id="task-list">
+                            <?php foreach ($tasks as $task) : ?>
+                                <li <?= 'data-task-id="' . $task['id'] . '"'; ?>><?= $task['content']; ?></li>
+                            <?php endforeach ?>
                         </ul>
                     </div>
                     <div id="input">

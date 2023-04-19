@@ -61,7 +61,7 @@ day.addEventListener('click', (event) => {
     const clickedDate = event.target.innerText.padStart(2, '0');;
     const clickedMonth = (month + 1).toString().padStart(2, '0');
     const clickedYear = year;
-    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Event+Title&dates=${clickedYear}${clickedMonth}${clickedDate}/${clickedYear}${clickedMonth}${clickedDate}`;
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=Event+Title&dates=${clickedYear}${clickedMonth}${clickedDate}`;
     window.open(googleCalendarUrl);
   }
 });

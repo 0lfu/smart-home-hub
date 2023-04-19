@@ -1,18 +1,18 @@
-const inputBox = $("#todo #inputBox");
+const todoInputBox = $("#todo #inputBox");
 
 $("#todo ul").sortable();
 
-inputBox.on("keypress", function (event) {
+todoInputBox.on("keypress", function (event) {
 	if (event.key === "Enter") {
-		addItem();
+		addTodoItem();
 	}
 });
 
-$(".addButton").on("click", addItem);
+$("#todo .addButton").on("click", addTodoItem);
 
-$("#task-list").on("click", "li", removeItem);
+$("#todo #task-list").on("click", "li", removeTodoItem);
 
-function removeItem() {
+function removeTodoItem() {
 	const taskId = $(this).data("task-id");
 	const liItem = $(this);
 	$.ajax({
@@ -35,8 +35,8 @@ function removeItem() {
 	});
 }
 
-function addItem() {
-	const inputContent = $("#inputBox").val();
+function addTodoItem() {
+	const inputContent = $("#todo #inputBox").val();
 	if (inputContent != "") {
 		$.ajax({
 			url: "components/todo-list/addTask.php",
@@ -45,12 +45,12 @@ function addItem() {
 			dataType: "json",
 			success: function (response) {
 				if (response.success) {
-					var taskList = document.getElementById("task-list");
+					var taskList = document.querySelector("#todo #task-list");
 					var newTask = document.createElement("li");
 					newTask.innerHTML = response.content;
 					newTask.setAttribute("data-task-id", response.taskId);
 					taskList.appendChild(newTask);
-					document.getElementById("inputBox").value = "";
+					document.querySelector("#todo #inputBox").value = "";
 				} else {
 					console.error("Error closing task");
 				}

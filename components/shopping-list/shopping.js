@@ -1,30 +1,64 @@
-const ShoppingInputBox = $("#shopping #inputBox");
-const ShoppingAddButton = $("#shopping .addButton");
-const ShoppingItemList = $("#shopping ul");
+const shoppingInputBox = $("#shopping #inputBox");
 
 $("#shopping ul").sortable();
 
-ShoppingAddButton.click(addShoppingItem);
-
-ShoppingInputBox.on("keypress", function (event) {
-    if (event.key === "Enter") {
-        addShoppingItem();
-    }
+shoppingInputBox.on("keypress", function (event) {
+	if (event.key === "Enter") {
+		addShoppingItem();
+	}
 });
 
-ShoppingItemList.click(removeShoppingItem);
+$("#shopping .addButton").on("click", addShoppingItem);
 
-function addShoppingItem() {
-    const newItem = ShoppingInputBox[0].value;
-    if (newItem !== "") {
-        const li = $("<li>").text(newItem);
-        ShoppingItemList.append(li);
-        ShoppingInputBox[0].value = "";
-    }
+$("#shopping #task-list").on("click", "li", removeShoppingItem);
+
+function removeShoppingItem() {
+	const taskId = $(this).data("task-id");
+	const liItem = $(this);
+	$.ajax({
+		url: "components/shopping-list/closeTask.php",
+		method: "POST",
+		data: { taskId: taskId },
+		dataType: "json",
+		success: function (response) {
+			console.log(response);
+			if (response.success) {
+				liItem.closest("li").remove();
+			} else {
+				console.error("Error closing task");
+			}
+		},
+		error: function (xhr, status, error) {
+			console.log(xhr);
+			console.error(xhr.responseText);
+		},
+	});
 }
 
-function removeShoppingItem(event) {
-    if (event.target.tagName === "LI") {
-        $(event.target).remove();
-    }
+function addShoppingItem() {
+	const inputContent = $("#shopping #inputBox").val();
+	if (inputContent != "") {
+		$.ajax({
+			url: "components/shopping-list/addTask.php",
+			method: "POST",
+			data: { content: inputContent },
+			dataType: "json",
+			success: function (response) {
+				if (response.success) {
+					var taskList = document.querySelector("#shopping #task-list");;
+					var newTask = document.createElement("li");
+					newTask.innerHTML = response.content;
+					newTask.setAttribute("data-task-id", response.taskId);
+					taskList.appendChild(newTask);
+					document.querySelector("#shopping #inputBox").value = "";
+				} else {
+					console.error("Error closing task");
+				}
+			},
+			error: function (xhr, status, error) {
+				console.log(xhr);
+				console.error(xhr.responseText);
+			},
+		});
+	}
 }
